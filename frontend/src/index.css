@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+}
+
+@keyframes thinking-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-thinking-pulse {
+  animation: thinking-pulse 2s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981, #3b82f6);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+/* Syntax Highlighting Styles */
+.syntax-highlighted .syntax-keywords {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.syntax-highlighted .syntax-strings {
+  color: #51cf66;
+}
+
+.syntax-highlighted .syntax-comments {
+  color: #868e96;
+  font-style: italic;
+}
+
+.syntax-highlighted .syntax-numbers {
+  color: #ffd43b;
+}
+
+.syntax-highlighted .syntax-functions {
+  color: #74c0fc;
+  font-weight: 500;
+}
+
+.syntax-highlighted .syntax-types {
+  color: #ffa8a8;
+  font-weight: 500;
+}
+
+.syntax-highlighted .syntax-tags {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.syntax-highlighted .syntax-attributes {
+  color: #ffd43b;
+}
+
+.syntax-highlighted .syntax-properties {
+  color: #74c0fc;
+  font-weight: 500;
+}
+
+.syntax-highlighted .syntax-values {
+  color: #51cf66;
+}
+
+.syntax-highlighted .syntax-selectors {
+  color: #ffa8a8;
+  font-weight: 500;
+}
+
+.syntax-highlighted .syntax-keys {
+  color: #74c0fc;
+  font-weight: 500;
+}
+
+.syntax-highlighted .syntax-booleans {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* Dark theme for code blocks with file names */
+.bg-gray-900 .syntax-highlighted .syntax-keywords {
+  color: #ff6b6b;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-strings {
+  color: #51cf66;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-comments {
+  color: #adb5bd;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-numbers {
+  color: #ffd43b;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-functions {
+  color: #74c0fc;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-types {
+  color: #ffa8a8;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-tags {
+  color: #ff6b6b;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-attributes {
+  color: #ffd43b;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-properties {
+  color: #74c0fc;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-values {
+  color: #51cf66;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-selectors {
+  color: #ffa8a8;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-keys {
+  color: #74c0fc;
+}
+
+.bg-gray-900 .syntax-highlighted .syntax-booleans {
+  color: #ff6b6b;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "days-ai-chat",
+  "version": "1.0.0",
+  "description": "Days AI Chat Application - Full Stack AI Chat Platform",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "deploy:backend": "cd backend && npm run deploy",
+    "deploy:frontend": "cd frontend && npm run deploy",
+    "test": "cd backend && npm test"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "aws",
+    "lambda",
+    "serverless"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

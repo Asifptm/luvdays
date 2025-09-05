@@ -1,0 +1,65 @@
+service: days-ai-chat-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'ap-south-1'}
+  memorySize: 1024
+  timeout: 25
+  environment:
+    NODE_ENV: production
+    MONGODB_URI: mongodb+srv://days:days1212@ragmodel.gv1vqjy.mongodb.net/daysdemo?retryWrites=true&w=majority&appName=Ragmodel
+    FASTAPI_URL: http://localhost:8000
+    CORS_ORIGIN: https://app.luvdays.com
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "arn:aws:logs:*:*:*"
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: '*'
+    environment:
+      MONGODB_URI: mongodb+srv://days:days1212@ragmodel.gv1vqjy.mongodb.net/daysdemo?retryWrites=true&w=majority&appName=Ragmodel
+      FASTAPI_URL: http://localhost:8000
+      CORS_ORIGIN: https://app.luvdays.com
+  
+  health:
+    handler: lambda.healthHandler
+    events:
+      - httpApi:
+          path: /health
+          method: GET
+    environment:
+      CORS_ORIGIN: https://app.luvdays.com
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 5000
+    lambdaPort: 3002
+    noPrependStageInUrl: true
+  
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    exclude: ['aws-sdk']
+    target: 'node18'
+    platform: 'node'
+    concurrency: 10
