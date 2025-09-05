@@ -2,6 +2,8 @@ service: days-ai-chat-backend
 
 frameworkVersion: '3'
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs18.x
@@ -10,10 +12,12 @@ provider:
   memorySize: 1024
   timeout: 25
   environment:
-    NODE_ENV: production
-    MONGODB_URI: mongodb+srv://days:days1212@ragmodel.gv1vqjy.mongodb.net/daysdemo?retryWrites=true&w=majority&appName=Ragmodel
-    FASTAPI_URL: http://localhost:8000
-    CORS_ORIGIN: https://app.luvdays.com
+    NODE_ENV: ${env:NODE_ENV}
+    MONGODB_URI: ${env:MONGODB_URI}
+    JWT_SECRET: ${env:JWT_SECRET}
+    JWT_EXPIRE: ${env:JWT_EXPIRE}
+    FASTAPI_URL: ${env:FASTAPI_URL}
+    CORS_ORIGIN: ${env:CORS_ORIGIN}
   iam:
     role:
       statements:
@@ -32,9 +36,11 @@ functions:
           path: /{proxy+}
           method: '*'
     environment:
-      MONGODB_URI: mongodb+srv://days:days1212@ragmodel.gv1vqjy.mongodb.net/daysdemo?retryWrites=true&w=majority&appName=Ragmodel
-      FASTAPI_URL: http://localhost:8000
-      CORS_ORIGIN: https://app.luvdays.com
+      MONGODB_URI: ${env:MONGODB_URI}
+      JWT_SECRET: ${env:JWT_SECRET}
+      JWT_EXPIRE: ${env:JWT_EXPIRE}
+      FASTAPI_URL: ${env:FASTAPI_URL}
+      CORS_ORIGIN: ${env:CORS_ORIGIN}
   
   health:
     handler: lambda.healthHandler
@@ -43,7 +49,7 @@ functions:
           path: /health
           method: GET
     environment:
-      CORS_ORIGIN: https://app.luvdays.com
+      CORS_ORIGIN: ${env:CORS_ORIGIN}
 
 # Custom Domain Configuration
 custom:
